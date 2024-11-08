@@ -1,0 +1,22 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import Icon from "./icon.astro";
+
+interface Props {
+  title: string;
+  icon: string;
+  href: string;
+  target?: HTMLAttributes<"a">["target"];
+}
+
+const { title, icon, href, target } = Astro.props;
+---
+
+<a
+  href={href}
+  target={target}
+  class="flex rounded-xl items-center gap-3.5 py-2.5 px-3 text-zinc-700 transition-colors duration-300 hover:bg-gray-200/75 hover:text-black"
+>
+  <Icon icon={icon} class="fill-black size-6" />
+  <span>{title}</span>
+</a>

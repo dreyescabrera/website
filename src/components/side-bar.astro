@@ -1,0 +1,35 @@
+---
+import Profile from "./profile.astro";
+import SideBarItem from "./side-bar-item.astro";
+import { NAV_LINKS, SOCIAL_LINKS } from "../constants/nav-links";
+---
+
+<aside class="p-6">
+  <div class="px-2 mb-6">
+    <Profile />
+  </div>
+
+  <nav>
+    <ul class="space-y-0.5">
+      {
+        NAV_LINKS.map(({ title, icon, href }) => (
+          <li>
+            <SideBarItem title={title} icon={icon} href={href} />
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <h3 class="mt-4 mb-2.5 mx-3">Social</h3>
+
+  <ul class="space-y-0.5">
+    {
+      SOCIAL_LINKS.map(({ title, icon, href }) => (
+        <li>
+          <SideBarItem title={title} icon={icon} href={href} target="_blank" />
+        </li>
+      ))
+    }
+  </ul>
+</aside>
