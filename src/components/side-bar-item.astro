@@ -10,12 +10,17 @@ interface Props {
 }
 
 const { title, icon, href, target } = Astro.props;
+
+const pathname = Astro.url.pathname;
+
+const isActive =
+  (pathname === "/" && href === "/") || pathname.startsWith(href);
 ---
 
 <a
   href={href}
   target={target}
-  class="flex rounded-xl items-center gap-3.5 py-2.5 px-3 text-zinc-700 transition-colors duration-300 hover:bg-gray-200/75 hover:text-black"
+  class={`flex rounded-xl items-center gap-3.5 py-2.5 px-3  transition-colors duration-300 hover:bg-gray-200/75 hover:text-black ${isActive ? "bg-gray-200/75 text-black" : "text-zinc-700"}`}
 >
   <Icon icon={icon} class="fill-black size-6" />
   <span>{title}</span>

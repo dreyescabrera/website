@@ -1,0 +1,30 @@
+---
+import location from "../assets/icons/location.svg?raw";
+import Icon from "./icon.astro";
+import { Button } from "./ui/button";
+---
+
+<section aria-label="">
+  <div class="flex items-end gap-5">
+    <h1 class="text-4xl font-bold inline-flex flex-col">
+      <span>Hello! I'm Diego</span>
+      <span class="text-emerald-600">Software Engineer</span>
+    </h1>
+
+    <span class="flex gap-2 items-center bg-zinc-50 p-2.5 rounded-xl">
+      <Icon icon={location} class="fill-zinc-700 size-5" />
+      <span class="text-zinc-700">Miami, FL</span>
+    </span>
+  </div>
+
+  <p class="text-zinc-700 my-6">
+    Product designer and design system specialist with over 9 years of
+    experience focusing on user experience and design systems to creating a
+    user-centered design in SaaS products.
+  </p>
+
+  <div class="space-x-2.5">
+    <Button>About</Button>
+    <Button variant="outline">Copy email</Button>
+  </div>
+</section>

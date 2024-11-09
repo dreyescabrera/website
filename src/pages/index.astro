@@ -3,10 +3,11 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import MainLayout from "../layouts/main-layout.astro";
+import PersonalIntro from "../components/personal-intro.astro";
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <main>
-    <h1>🧑‍🚀 Hello, Astronaut!</h1>
+    <PersonalIntro />
   </main>
 </MainLayout>

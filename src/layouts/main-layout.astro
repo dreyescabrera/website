@@ -67,11 +67,13 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
       </div>
 
       <div
-        class="grid grid-rows-[1fr_auto] col-span-10 bg-white m-1.5 rounded-2xl p-5 container mx-auto shadow-[0_0_8px_2px_rgba(200,200,200,0.15)]"
+        class="col-span-10 grid bg-white m-1.5 rounded-2xl p-5 shadow-[0_0_8px_2px_rgba(200,200,200,0.15)]"
       >
-        <slot />
+        <div class="grid grid-rows-[1fr_auto] max-w-screen-md w-full mx-auto">
+          <slot />
 
-        <Footer />
+          <Footer />
+        </div>
       </div>
     </div>
   </body>
