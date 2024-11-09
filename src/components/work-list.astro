@@ -1,0 +1,42 @@
+---
+type ListItem = {
+  title: string;
+  yearStart?: string;
+  yearEnd: string;
+  img: {
+    src: string;
+    alt: string;
+  };
+};
+
+interface Props {
+  list: ListItem[];
+}
+
+const { list } = Astro.props;
+---
+
+<ul
+  class="grid grid-cols-[repeat(auto-fit,minmax(18.75rem,1fr))] gap-x-6 gap-y-10"
+>
+  {
+    list.map(({ title, yearStart, yearEnd, img }) => (
+      <li>
+        <figure>
+          <img
+            src={img.src}
+            alt={img.alt}
+            class="w-full aspect-[4_/_3] rounded-xl"
+          />
+        </figure>
+
+        <h3 class="font-medium leading-none mt-5 mb-2.5">{title}</h3>
+
+        <p class="text-zinc-400 leading-none">
+          {yearStart && <span>{yearStart} - </span>}
+          <span>{yearEnd}</span>
+        </p>
+      </li>
+    ))
+  }
+</ul>
