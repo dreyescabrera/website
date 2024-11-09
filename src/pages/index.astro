@@ -5,6 +5,7 @@ import MainLayout from "../layouts/main-layout.astro";
 import PersonalIntro from "../components/personal-intro.astro";
 import WorkList from "@/components/work-list.astro";
 import ServicesList from "@/components/services-list.astro";
+import SimpleContactMeSection from "@/components/simple-contact-me-section.astro";
 
 const workList = [
   {
@@ -79,5 +80,7 @@ const servicesList = [
 
       <ServicesList list={servicesList} />
     </section>
+
+    <SimpleContactMeSection />
   </main>
 </MainLayout>
