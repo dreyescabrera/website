@@ -1,10 +1,10 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import location from "../assets/icons/location.svg?raw";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import MainLayout from "../layouts/main-layout.astro";
 import PersonalIntro from "../components/personal-intro.astro";
 import WorkList from "@/components/work-list.astro";
+import ServicesList from "@/components/services-list.astro";
 
 const workList = [
   {
@@ -44,6 +44,24 @@ const workList = [
     },
   },
 ];
+
+const servicesList = [
+  {
+    title: "Webflow",
+    description: "from $100 per hour",
+    icon: location,
+  },
+  {
+    title: "Shopify",
+    description: "from $100 per hour",
+    icon: location,
+  },
+  {
+    title: "GitHub",
+    description: "from $100 per hour",
+    icon: location,
+  },
+];
 ---
 
 <MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -54,6 +72,12 @@ const workList = [
       <h2 class="text-2xl font-bold">Selected Work</h2>
 
       <WorkList list={workList} />
+    </section>
+
+    <section class="space-y-8">
+      <h2 class="text-2xl font-bold">Selected Services</h2>
+
+      <ServicesList list={servicesList} />
     </section>
   </main>
 </MainLayout>
