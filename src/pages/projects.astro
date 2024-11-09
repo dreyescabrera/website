@@ -1,0 +1,41 @@
+---
+import SimpleContactMeSection from "@/components/simple-contact-me-section.astro";
+import WorkList from "@/components/work-list.astro";
+import MainLayout from "@/layouts/main-layout.astro";
+
+const workList = [
+  {
+    title: "Webflow",
+    yearStart: "2022",
+    yearEnd: "Present",
+    img: {
+      src: "https://picsum.photos/200/300",
+      alt: "Webflow",
+    },
+  },
+  {
+    title: "Shopify",
+    yearStart: "2021",
+    yearEnd: "2022",
+    img: {
+      src: "https://picsum.photos/200/300",
+      alt: "Shopify",
+    },
+  },
+];
+---
+
+<MainLayout title="Projects" description="My personal projects">
+  <main class="">
+    <h1 class="text-4xl font-bold">Projects</h1>
+
+    <p class="text-zinc-500 mb-20 mt-2.5">
+      I'm always looking for new projects to work on. If you're interested in
+      working with me, feel free to reach out.
+    </p>
+
+    <WorkList list={workList} />
+
+    <SimpleContactMeSection />
+  </main>
+</MainLayout>
