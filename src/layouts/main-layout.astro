@@ -1,9 +1,9 @@
 ---
-import Footer from "../components/footer.astro";
+import Footer from "@/components/layout/footer.astro";
+import ResponsiveSideBar from "@/components/layout/responsive-side-bar.astro";
 
 import "@fontsource-variable/inter";
 import "../styles/global.css";
-import ResponsiveSideBar from "@/components/responsive-side-bar.astro";
 
 interface Props {
   title: string;
@@ -63,13 +63,13 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
   </head>
   <body>
-    <div class="sm:grid grid-cols-[auto_1fr] min-h-dvh">
+    <div class="min-h-dvh grid-cols-[auto_1fr] sm:grid">
       <ResponsiveSideBar />
 
       <div
-        class="grid bg-white m-1.5 rounded-2xl px-5 py-10 md:px-10 md:py-20 shadow-[0_0_8px_2px_rgba(200,200,200,0.15)]"
+        class="m-1.5 grid rounded-2xl bg-white px-5 py-10 shadow-[0_0_8px_2px_rgba(200,200,200,0.15)] md:px-10 md:py-20"
       >
-        <div class="grid grid-rows-[1fr_auto] w-full max-w-screen-md mx-auto">
+        <div class="mx-auto grid w-full max-w-screen-md grid-rows-[1fr_auto]">
           <slot />
 
           <Footer />

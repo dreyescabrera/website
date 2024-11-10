@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import profile from "../assets/images/profile.jpg";
 ---
 
 <section aria-label="About Me" class="flex gap-10">
@@ -10,7 +9,7 @@ import profile from "../assets/images/profile.jpg";
       <span class="text-zinc-500">Software Engineer</span>
     </h1>
 
-    <p class="text-zinc-500 my-5">
+    <p class="my-5 text-zinc-500">
       I'm Patryk, a product designer and design system specialist from Poland
       with over 9 years of experience focusing on user experience and design
       systems to creating a user-centered design in SaaS products.
@@ -26,9 +25,11 @@ import profile from "../assets/images/profile.jpg";
 
   <figure class="hidden sm:block">
     <Image
-      src={profile}
+      src="/profile.jpg"
+      width={500}
+      height={500}
       alt="Diego Reyes Cabrera"
-      class="aspect-square w-full object-cover object-top rounded-xl shadow"
+      class="aspect-square w-full rounded-xl object-cover object-top shadow"
     />
   </figure>
 </section>

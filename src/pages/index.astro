@@ -1,11 +1,11 @@
 ---
-import location from "../assets/icons/location.svg?raw";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import location from "@/assets/icons/location.svg?raw";
+import SimpleContactMeSection from "@/components/contact/simple-contact-me-section.astro";
+import PersonalIntro from "@/components/personal-info/personal-intro.astro";
+import ServicesList from "@/components/personal-info/services-list.astro";
+import WorkList from "@/components/personal-info/work-list.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import MainLayout from "../layouts/main-layout.astro";
-import PersonalIntro from "../components/personal-intro.astro";
-import WorkList from "@/components/work-list.astro";
-import ServicesList from "@/components/services-list.astro";
-import SimpleContactMeSection from "@/components/simple-contact-me-section.astro";
 
 const workList = [
   {

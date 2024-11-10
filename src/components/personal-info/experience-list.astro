@@ -26,18 +26,18 @@ const { list } = Astro.props;
             <img
               src={img.src}
               alt={img.alt}
-              class=" ring-zinc-200 ring-1 aspect-square object-cover rounded-xl"
+              class="aspect-square rounded-xl object-cover ring-1 ring-zinc-200"
             />
           </figure>
 
           <div>
-            <h3 class="font-medium leading-none text-lg mb-3.5">{jobTitle}</h3>
+            <h3 class="mb-3.5 text-lg font-medium leading-none">{jobTitle}</h3>
 
-            <p class="text-xs tracking-wide leading-none mb-1">{companyName}</p>
+            <p class="mb-1 text-xs leading-none tracking-wide">{companyName}</p>
 
             <p class="text-xs tracking-wide">{period}</p>
 
-            <p class="text-sm mt-2.5">{description}</p>
+            <p class="mt-2.5 text-sm">{description}</p>
           </div>
         </li>
 

@@ -1,10 +1,10 @@
-import home from "../assets/icons/home.svg?raw";
-import briefcase from "../assets/icons/briefcase.svg?raw";
-import person from "../assets/icons/person.svg?raw";
-import pencil from "../assets/icons/pencil.svg?raw";
-import letter from "../assets/icons/letter.svg?raw";
-import x from "../assets/icons/x.svg?raw";
-import linkedin from "../assets/icons/linkedin.svg?raw";
+import home from "@/assets/icons/home.svg?raw";
+import briefcase from "@/assets/icons/briefcase.svg?raw";
+import person from "@/assets/icons/person.svg?raw";
+// import pencil from "@/assets/icons/pencil.svg?raw";
+import letter from "@/assets/icons/letter.svg?raw";
+import x from "@/assets/icons/x.svg?raw";
+import linkedin from "@/assets/icons/linkedin.svg?raw";
 
 type NavLink = {
   title: string;

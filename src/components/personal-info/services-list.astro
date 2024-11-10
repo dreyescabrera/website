@@ -1,0 +1,33 @@
+---
+import Icon from "../utils/icon.astro";
+
+type ListItem = {
+  title: string;
+  description: string;
+  icon: string;
+};
+
+interface Props {
+  list: ListItem[];
+}
+
+const { list } = Astro.props;
+---
+
+<ul class="flex flex-col gap-5">
+  {
+    list.map(({ title, description, icon }) => (
+      <li class="flex items-center gap-4">
+        <span class="rounded-full bg-zinc-50 p-2 sm:p-3">
+          <Icon icon={icon} class="size-4 text-zinc-500 sm:size-5" />
+        </span>
+
+        <p class="text-sm text-zinc-800">{title}</p>
+
+        <div class="h-px w-full grow bg-zinc-200" />
+
+        <p class="whitespace-nowrap text-xs text-zinc-400">{description}</p>
+      </li>
+    ))
+  }
+</ul>

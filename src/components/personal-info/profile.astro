@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import profileImage from "../assets/images/profile.jpg";
 
 interface Props {
   hideRole?: boolean;
@@ -11,10 +10,10 @@ const { hideRole = false } = Astro.props;
 
 <section
   aria-label="Profile"
-  class="flex sm:flex-col lg:flex-row items-center gap-4"
+  class="flex items-center gap-4 sm:flex-col lg:flex-row"
 >
   <Image
-    src={profileImage}
+    src="/profile.jpg"
     alt="Diego Reyes Cabrera"
     width={150}
     height={150}
@@ -22,8 +21,8 @@ const { hideRole = false } = Astro.props;
   />
 
   <div class="space-y-2 *:leading-none sm:text-center lg:text-left">
-    <h2 class="font-medium text-sm">Diego Reyes Cabrera</h2>
+    <h2 class="text-sm font-medium">Diego Reyes Cabrera</h2>
 
-    {!hideRole && <p class="text-zinc-700 text-xs">Software Engineer</p>}
+    {!hideRole && <p class="text-xs text-zinc-700">Software Engineer</p>}
   </div>
 </section>

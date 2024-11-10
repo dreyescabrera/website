@@ -26,13 +26,13 @@ const { list } = Astro.props;
           <img
             src={img.src}
             alt={img.alt}
-            class="w-full aspect-[4_/_3] rounded-xl"
+            class="aspect-[4_/_3] w-full rounded-xl"
           />
         </figure>
 
-        <h3 class="font-normal leading-none mt-5 text-sm mb-2.5">{title}</h3>
+        <h3 class="mb-2.5 mt-5 text-sm font-normal leading-none">{title}</h3>
 
-        <p class="text-zinc-500 leading-none text-xs">
+        <p class="text-xs leading-none text-zinc-500">
           {yearStart && <span>{yearStart} - </span>}
           <span>{yearEnd}</span>
         </p>

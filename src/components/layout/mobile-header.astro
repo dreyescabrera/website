@@ -1,12 +1,12 @@
 ---
-import { HamburgerButton } from "./hamburger-button";
-import Profile from "./profile.astro";
-import SectionNav from "./section-nav.astro";
-import SocialNav from "./social-nav.astro";
+import { HamburgerButton } from "../buttons/hamburger-button";
+import SectionNav from "../nav/section-nav.astro";
+import SocialNav from "../nav/social-nav.astro";
+import Profile from "../personal-info/profile.astro";
 ---
 
 <div
-  class="relative flex justify-between items-center bg-white ring-1 ring-zinc-200 px-4 py-3 shadow-sm"
+  class="relative flex items-center justify-between bg-white px-4 py-3 shadow-sm ring-1 ring-zinc-200"
 >
   <Profile hideRole />
 
@@ -15,7 +15,7 @@ import SocialNav from "./social-nav.astro";
   </span>
 
   <div
-    class="absolute shadow-sm ring-1 ring-zinc-200 transition -z-10 duration-200 opacity-0 -translate-y-10 pointer-events-none bg-white top-full p-4 pb-6 left-0 w-full"
+    class="pointer-events-none absolute left-0 top-full -z-10 w-full -translate-y-10 bg-white p-4 pb-6 opacity-0 shadow-sm ring-1 ring-zinc-200 transition duration-200"
     id="mobile-nav"
   >
     <SectionNav />
