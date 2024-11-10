@@ -1,0 +1,16 @@
+---
+import { NAV_LINKS } from "@/constants/nav-links";
+import SideBarItem from "./side-bar-item.astro";
+---
+
+<nav>
+  <ul class="space-y-1.5">
+    {
+      NAV_LINKS.map(({ title, icon, href }) => (
+        <li>
+          <SideBarItem title={title} icon={icon} href={href} />
+        </li>
+      ))
+    }
+  </ul>
+</nav>

@@ -29,11 +29,6 @@ export const NAV_LINKS: NavLink[] = [
     href: "/about",
   },
   {
-    title: "Blog",
-    icon: pencil,
-    href: "/blog",
-  },
-  {
     title: "Contact",
     icon: letter,
     href: "/contact",

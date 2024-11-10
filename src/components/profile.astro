@@ -1,20 +1,29 @@
 ---
 import { Image } from "astro:assets";
 import profileImage from "../assets/images/profile.jpg";
+
+interface Props {
+  hideRole?: boolean;
+}
+
+const { hideRole = false } = Astro.props;
 ---
 
-<section aria-label="Profile" class="flex items-center gap-4">
+<section
+  aria-label="Profile"
+  class="flex sm:flex-col lg:flex-row items-center gap-4"
+>
   <Image
     src={profileImage}
     alt="Diego Reyes Cabrera"
     width={150}
     height={150}
-    class="size-14 object-cover object-top rounded-lg"
+    class={`object-cover sm:rounded-full object-top lg:rounded-lg rounded-lg ${hideRole ? "size-10" : "size-14"}`}
   />
 
-  <div class="space-y-2 *:leading-none">
-    <h2 class="font-medium">Diego Reyes Cabrera</h2>
+  <div class="space-y-2 *:leading-none sm:text-center lg:text-left">
+    <h2 class="font-medium text-sm">Diego Reyes Cabrera</h2>
 
-    <p class="text-zinc-700">Software Engineer</p>
+    {!hideRole && <p class="text-zinc-700 text-xs">Software Engineer</p>}
   </div>
 </section>

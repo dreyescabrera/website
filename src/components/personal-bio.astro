@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import profile from "../assets/images/profile.jpg";
+---
+
+<section aria-label="About Me" class="flex gap-10">
+  <div>
+    <h1 class="inline-flex flex-col gap-2.5">
+      <span> Diego Reyes Cabrera </span>
+      <span class="text-zinc-500">Software Engineer</span>
+    </h1>
+
+    <p class="text-zinc-500 my-5">
+      I'm Patryk, a product designer and design system specialist from Poland
+      with over 9 years of experience focusing on user experience and design
+      systems to creating a user-centered design in SaaS products.
+    </p>
+
+    <p class="text-zinc-500">
+      Co-creator at Tetrisly one of the most popular starter kits for design
+      systems. I had the opportunity to work with Phenom.com, Bidroom.com or
+      Perfops.net but also with many startups from around the world as a Lead
+      Designer.
+    </p>
+  </div>
+
+  <figure class="hidden sm:block">
+    <Image
+      src={profile}
+      alt="Diego Reyes Cabrera"
+      class="aspect-square w-full object-cover object-top rounded-xl shadow"
+    />
+  </figure>
+</section>

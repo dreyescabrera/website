@@ -1,0 +1,53 @@
+---
+import { HamburgerButton } from "./hamburger-button";
+import Profile from "./profile.astro";
+import SectionNav from "./section-nav.astro";
+import SocialNav from "./social-nav.astro";
+---
+
+<div
+  class="relative flex justify-between items-center bg-white ring-1 ring-zinc-200 px-4 py-3 shadow-sm"
+>
+  <Profile hideRole />
+
+  <span id="mobile-nav-toggle">
+    <HamburgerButton client:load />
+  </span>
+
+  <div
+    class="absolute shadow-sm ring-1 ring-zinc-200 transition -z-10 duration-200 opacity-0 -translate-y-10 pointer-events-none bg-white top-full p-4 pb-6 left-0 w-full"
+    id="mobile-nav"
+  >
+    <SectionNav />
+
+    <SocialNav />
+  </div>
+</div>
+
+<script>
+  const toggle = document.querySelector("#mobile-nav-toggle")!;
+  const mobileNav = document.querySelector("#mobile-nav")!;
+
+  toggle.addEventListener("click", () => {
+    const toggleClasses = "pointer-events-none opacity-0 -translate-y-10".split(
+      " ",
+    );
+
+    for (const className of toggleClasses) {
+      mobileNav.classList.toggle(className);
+    }
+
+    document.body.classList.toggle("overflow-hidden");
+  });
+
+  const isDesktopMediaQuery = window.matchMedia("(min-width: 640px)");
+
+  const removeMobileNav = () => {
+    mobileNav.classList.add("hidden");
+    document.body.classList.remove("overflow-hidden");
+  };
+
+  isDesktopMediaQuery.addEventListener("change", (e) => {
+    if (e.matches) removeMobileNav();
+  });
+</script>

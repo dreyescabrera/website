@@ -1,0 +1,14 @@
+---
+import MobileHeader from "./mobile-header.astro";
+import SideBar from "./side-bar.astro";
+---
+
+<div class="sm:h-dvh *:h-full sticky top-0 z-10 left-0">
+  <div class="sm:hidden">
+    <MobileHeader />
+  </div>
+
+  <div class="hidden sm:block">
+    <SideBar />
+  </div>
+</div>

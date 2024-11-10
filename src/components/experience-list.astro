@@ -1,0 +1,48 @@
+---
+interface ListItem {
+  jobTitle: string;
+  companyName: string;
+  period: string;
+  description: string;
+  img: {
+    src: string;
+    alt: string;
+  };
+}
+
+interface Props {
+  list: ListItem[];
+}
+
+const { list } = Astro.props;
+---
+
+<ul class="space-y-8">
+  {
+    list.map(({ jobTitle, companyName, period, description, img }, index) => (
+      <>
+        <li class="flex justify-start gap-6">
+          <figure class="size-40">
+            <img
+              src={img.src}
+              alt={img.alt}
+              class=" ring-zinc-200 ring-1 aspect-square object-cover rounded-xl"
+            />
+          </figure>
+
+          <div>
+            <h3 class="font-medium leading-none text-lg mb-3.5">{jobTitle}</h3>
+
+            <p class="text-xs tracking-wide leading-none mb-1">{companyName}</p>
+
+            <p class="text-xs tracking-wide">{period}</p>
+
+            <p class="text-sm mt-2.5">{description}</p>
+          </div>
+        </li>
+
+        {index !== list.length - 1 && <hr class="border-zinc-200" />}
+      </>
+    ))
+  }
+</ul>

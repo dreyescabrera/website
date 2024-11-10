@@ -21,8 +21,8 @@ const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
 <a
   href={href}
   target={target}
-  class={`flex rounded-xl items-center gap-3.5 py-2.5 px-3  transition-colors duration-300 hover:bg-gray-200/75 hover:text-black ${isActive ? "bg-gray-200/75 text-black" : "text-zinc-700"}`}
+  class={`flex rounded-xl items-center gap-2.5 py-2 px-2 transition-colors duration-300 hover:bg-gray-200/75 hover:text-black ${isActive ? "bg-gray-200/75 text-black" : "text-zinc-500"}`}
 >
-  <Icon icon={icon} class="fill-black size-6" />
-  <span>{title}</span>
+  <Icon icon={icon} class="size-5" />
+  <span class="text-xs">{title}</span>
 </a>
