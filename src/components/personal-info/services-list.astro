@@ -17,16 +17,20 @@ const { list } = Astro.props;
 <ul class="flex flex-col gap-5">
   {
     list.map(({ title, description, icon }) => (
-      <li class="flex items-center gap-4">
-        <span class="rounded-full bg-zinc-50 p-2 sm:p-3">
-          <Icon icon={icon} class="size-4 text-zinc-500 sm:size-5" />
-        </span>
+      <li class="flex flex-col items-start gap-0 md:flex-row md:items-center md:gap-4">
+        <div class="flex items-center gap-4">
+          <span class="rounded-full bg-zinc-50 p-2 md:p-3">
+            <Icon icon={icon} class="size-4 text-zinc-500 md:size-5" />
+          </span>
 
-        <p class="text-sm text-zinc-800">{title}</p>
+          <p class="w-max text-sm text-zinc-800">{title}</p>
+        </div>
 
-        <div class="h-px w-full grow bg-zinc-200" />
+        <div class="hidden h-px w-full grow bg-zinc-200 md:block" />
 
-        <p class="whitespace-nowrap text-xs text-zinc-400">{description}</p>
+        <p class="whitespace-nowrap pl-12 text-xs text-zinc-400">
+          {description}
+        </p>
       </li>
     ))
   }

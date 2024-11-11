@@ -2,39 +2,29 @@
 import SimpleContactMeSection from "@/components/contact/simple-contact-me-section.astro";
 import WorkList from "@/components/personal-info/work-list.astro";
 import MainLayout from "@/layouts/main-layout.astro";
+import { getCollection } from "astro:content";
 
-const workList = [
-  {
-    title: "Webflow",
-    yearStart: "2022",
-    yearEnd: "Present",
-    img: {
-      src: "https://picsum.photos/200/300",
-      alt: "Webflow",
-    },
-  },
-  {
-    title: "Shopify",
-    yearStart: "2021",
-    yearEnd: "2022",
-    img: {
-      src: "https://picsum.photos/200/300",
-      alt: "Shopify",
-    },
-  },
-];
+const projects = await getCollection("projects");
 ---
 
 <MainLayout title="Projects" description="My personal projects">
   <main>
     <h1>Projects</h1>
 
-    <p class="mb-10 mt-2.5 text-zinc-500 sm:mb-20">
+    <p class="mb-10 mt-2.5 text-zinc-500 sm:mb-14">
       I'm always looking for new projects to work on. If you're interested in
       working with me, feel free to reach out.
     </p>
 
-    <WorkList list={workList} />
+    <WorkList
+      list={projects.map((project) => ({
+        ...project.data,
+        img: {
+          src: project.data.imgUrl,
+          alt: project.data.title,
+        },
+      }))}
+    />
 
     <SimpleContactMeSection />
   </main>

@@ -1,25 +1,27 @@
+---
+import { TOOLS } from "@/constants/tools";
+
+const toolRows = TOOLS.reduce((acc, tool, index) => {
+  if (index % 2 === 0) {
+    acc.push([tool]);
+  } else {
+    acc[acc.length - 1].push(tool);
+  }
+
+  return acc;
+}, [] as string[][]);
+---
+
 <table class="w-full table-fixed border-separate border-spacing-1">
   <tbody>
-    <tr class="group">
-      <td>React</td>
-      <td>Next.js</td>
-    </tr>
-    <tr class="group">
-      <td>Tailwind</td>
-      <td>Astro</td>
-    </tr>
-    <tr class="group">
-      <td>TypeScript</td>
-      <td>MDX</td>
-    </tr>
-    <tr class="group">
-      <td>Node.js</td>
-      <td>Git</td>
-    </tr>
-    <tr class="group">
-      <td>PostgreSQL</td>
-      <td>Prisma</td>
-    </tr>
+    {
+      toolRows.map((row) => (
+        <tr class="group">
+          <td>{row[0]}</td>
+          <td>{row[1]}</td>
+        </tr>
+      ))
+    }
   </tbody>
 </table>
 

@@ -1,8 +1,8 @@
 ---
 type ListItem = {
   title: string;
-  yearStart?: string;
-  yearEnd: string;
+  yearStart?: number;
+  yearEnd: number;
   img: {
     src: string;
     alt: string;
@@ -22,11 +22,11 @@ const { list } = Astro.props;
   {
     list.map(({ title, yearStart, yearEnd, img }) => (
       <li>
-        <figure>
+        <figure class="overflow-hidden rounded-xl shadow-sm ring-1 ring-zinc-200">
           <img
             src={img.src}
             alt={img.alt}
-            class="aspect-[4_/_3] w-full rounded-xl"
+            class="aspect-[4.475_/_3] w-full object-cover"
           />
         </figure>
 

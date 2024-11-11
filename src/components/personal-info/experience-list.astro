@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 interface ListItem {
   jobTitle: string;
   companyName: string;
@@ -17,16 +19,18 @@ interface Props {
 const { list } = Astro.props;
 ---
 
-<ul class="space-y-8">
+<ul class="space-y-8" aria-label="Experience List">
   {
     list.map(({ jobTitle, companyName, period, description, img }, index) => (
       <>
         <li class="flex justify-start gap-6">
-          <figure class="size-40">
-            <img
+          <figure class="size-36">
+            <Image
               src={img.src}
               alt={img.alt}
-              class="aspect-square rounded-xl object-cover ring-1 ring-zinc-200"
+              width={200}
+              height={200}
+              class="aspect-square rounded-xl object-scale-down p-1 ring-1 ring-zinc-200"
             />
           </figure>
 

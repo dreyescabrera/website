@@ -1,55 +1,13 @@
 ---
-import location from "@/assets/icons/location.svg?raw";
-
 import SimpleContactMeSection from "@/components/contact/simple-contact-me-section.astro";
 import ExperienceList from "@/components/personal-info/experience-list.astro";
 import PersonalBio from "@/components/personal-info/personal-bio.astro";
 import ServicesList from "@/components/personal-info/services-list.astro";
 import ToolsTable from "@/components/personal-info/tools-table.astro";
+import { SERVICES } from "@/constants/services";
 import MainLayout from "@/layouts/main-layout.astro";
 
-const servicesList = [
-  {
-    title: "Webflow",
-    description: "from $100 per hour",
-    icon: location,
-  },
-  {
-    title: "Shopify",
-    description: "from $100 per hour",
-    icon: location,
-  },
-  {
-    title: "GitHub",
-    description: "from $100 per hour",
-    icon: location,
-  },
-];
-
-const experienceList = [
-  {
-    jobTitle: "Lead Designer",
-    companyName: "Phenom.com",
-    period: "2022 - Present",
-    description:
-      "I was the lead designer for the design system of Phenom.com. I worked with the team to create a user-centered design system that was easy to use and intuitive for both designers and developers.",
-    img: {
-      src: "https://picsum.photos/200/300",
-      alt: "Phenom.com",
-    },
-  },
-  {
-    jobTitle: "Lead Designer",
-    companyName: "Bidroom.com",
-    period: "2022 - Present",
-    description:
-      "I was the lead designer for the design system of Bidroom.com. I worked with the team to create a user-centered design system that was easy to use and intuitive for both designers and developers.",
-    img: {
-      src: "https://picsum.photos/200/300",
-      alt: "Bidroom.com",
-    },
-  },
-];
+import { EXPERIENCE } from "@/constants/experience";
 ---
 
 <MainLayout title="About Me" description="Lorem ipsum dolor sit amet">
@@ -59,7 +17,13 @@ const experienceList = [
     <section class="space-y-8">
       <h2>Services</h2>
 
-      <ServicesList list={servicesList} />
+      <ServicesList
+        list={SERVICES.map((service) => ({
+          icon: service.icon,
+          title: service.name,
+          description: service.description,
+        }))}
+      />
     </section>
 
     <section class="space-y-8">
@@ -71,7 +35,7 @@ const experienceList = [
     <section class="space-y-8">
       <h2>Experience</h2>
 
-      <ExperienceList list={experienceList} />
+      <ExperienceList list={EXPERIENCE} />
     </section>
 
     <SimpleContactMeSection />

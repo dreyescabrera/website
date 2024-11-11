@@ -1,30 +1,34 @@
 ---
 import location from "@/assets/icons/location.svg?raw";
-import { Button } from "../ui/button";
+import { CopyEmailButton } from "../buttons/copy-email-button";
+import { Link } from "../ui/link";
 import Icon from "../utils/icon.astro";
 ---
 
-<section aria-label="">
+<section aria-label="Personal Introduction">
   <div class="flex flex-wrap items-end gap-5">
     <h1 class="inline-flex flex-col">
       <span>Hello! I'm Diego</span>
       <span class="text-emerald-600">Software Engineer</span>
     </h1>
 
-    <span class="flex items-center gap-2 rounded-xl bg-zinc-50 p-2.5">
-      <Icon icon={location} class="size-5 fill-zinc-700" />
-      <span class="text-zinc-700">Miami, FL</span>
+    <span
+      class="flex items-center gap-2 rounded-xl bg-zinc-50 p-2.5 text-base text-zinc-500"
+    >
+      <Icon icon={location} class="size-[1.125rem] fill-current" />
+      <span>Miami, FL</span>
     </span>
   </div>
 
   <p class="my-6 text-zinc-700">
-    Product designer and design system specialist with over 9 years of
-    experience focusing on user experience and design systems to creating a
-    user-centered design in SaaS products.
+    Software engineer specializing in web and mobiledevelopment. I leverage
+    modern technologies to create tailored solutions that drive business growth
+    by increasing web traffic, boosting conversions, and enhancing accessibility
+    for all users.
   </p>
 
-  <div class="space-x-2.5">
-    <Button>About</Button>
-    <Button variant="outline">Copy email</Button>
+  <div class="flex gap-2.5">
+    <Link href="/about">About</Link>
+    <CopyEmailButton client:load />
   </div>
 </section>

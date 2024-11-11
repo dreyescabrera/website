@@ -1,0 +1,30 @@
+---
+import MainLayout from "@/layouts/main-layout.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"projects">;
+}
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: {
+      entry: project,
+    },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<MainLayout title="idk" description="idk">
+  <main>
+    <h1>idk</h1>
+    <Content />
+  </main>
+</MainLayout>

@@ -1,84 +1,45 @@
 ---
-import location from "@/assets/icons/location.svg?raw";
 import SimpleContactMeSection from "@/components/contact/simple-contact-me-section.astro";
 import PersonalIntro from "@/components/personal-info/personal-intro.astro";
 import ServicesList from "@/components/personal-info/services-list.astro";
 import WorkList from "@/components/personal-info/work-list.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { SERVICES } from "@/constants/services";
+import { getCollection } from "astro:content";
 import MainLayout from "../layouts/main-layout.astro";
 
-const workList = [
-  {
-    title: "Webflow",
-    yearStart: "2022",
-    yearEnd: "Present",
-    img: {
-      src: "https://picsum.photos/200/300",
-      alt: "Webflow",
-    },
-  },
-  {
-    title: "Shopify",
-    yearStart: "2021",
-    yearEnd: "2022",
-    img: {
-      src: "https://picsum.photos/200/300",
-      alt: "Shopify",
-    },
-  },
-  {
-    title: "Shopify",
-    yearStart: "2021",
-    yearEnd: "2022",
-    img: {
-      src: "https://picsum.photos/200/300",
-      alt: "Shopify",
-    },
-  },
-  {
-    title: "Shopify",
-    yearStart: "2021",
-    yearEnd: "2022",
-    img: {
-      src: "https://picsum.photos/200/300",
-      alt: "Shopify",
-    },
-  },
-];
+const allProjects = await getCollection("projects");
 
-const servicesList = [
-  {
-    title: "Webflow",
-    description: "from $100 per hour",
-    icon: location,
-  },
-  {
-    title: "Shopify",
-    description: "from $100 per hour",
-    icon: location,
-  },
-  {
-    title: "GitHub",
-    description: "from $100 per hour",
-    icon: location,
-  },
-];
+const projects = allProjects.filter((project) => project.data.highlighted);
 ---
 
-<MainLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<MainLayout title="Diego Reyes Cabrera" description="">
   <main class="space-y-20">
     <PersonalIntro />
 
     <section class="space-y-8">
       <h2>Selected Work</h2>
 
-      <WorkList list={workList} />
+      <WorkList
+        list={projects.map((project) => ({
+          ...project.data,
+          img: {
+            src: project.data.imgUrl,
+            alt: project.data.title,
+          },
+        }))}
+      />
     </section>
 
     <section class="space-y-8">
       <h2>Selected Services</h2>
 
-      <ServicesList list={servicesList} />
+      <ServicesList
+        list={SERVICES.map((service) => ({
+          icon: service.icon,
+          title: service.name,
+          description: service.description,
+        }))}
+      />
     </section>
 
     <SimpleContactMeSection />

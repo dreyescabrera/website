@@ -6,13 +6,20 @@ import eslintPluginAstro from "eslint-plugin-astro";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
+  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx,astro}"] },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
-
   ...tseslint.configs.recommended,
-
   ...eslintPluginAstro.configs.recommended,
-
-  pluginReact.configs.flat.recommended,
+  {
+    files: ["**/*.{jsx,tsx}"],
+    plugins: pluginReact.configs.flat.recommended.plugins,
+    rules: {
+      ...pluginReact.configs.flat.recommended.rules,
+      rules: {
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
+      },
+    },
+  },
 ];
