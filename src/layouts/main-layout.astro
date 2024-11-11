@@ -2,6 +2,7 @@
 import Footer from "@/components/layout/footer.astro";
 import ResponsiveSideBar from "@/components/layout/responsive-side-bar.astro";
 
+import MetaIcons from "@/components/meta/meta-icons.astro";
 import "@fontsource-variable/inter";
 import "../styles/global.css";
 
@@ -21,14 +22,13 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
 
-    <!-- Canonical URL -->
+    <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Primary Meta Tags -->
-    <title>{title}</title>
+    <MetaIcons />
+
     <meta name="title" content={title} />
     <meta name="description" content={description} />
 
