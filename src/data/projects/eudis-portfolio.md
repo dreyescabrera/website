@@ -1,10 +1,10 @@
 ---
-title: "Alamo Landing Page"
-client: "Alamo Algorithmics"
-tags: ["Web Development", "Design", "Landing Page"]
-imgUrl: "/media/alamo-demo.webp"
+title: "Designer Portfolio"
+client: "Eudis Alvarez"
+tags: ["Web Development", "Design", "Portfolio"]
+imgUrl: "/media/eudis-portfolio-demo.webp"
 yearEnd: 2024
-highlighted: true
+url: "https://eudisalvarez.com"
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra.

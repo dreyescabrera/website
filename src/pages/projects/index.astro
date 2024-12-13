@@ -19,6 +19,7 @@ const projects = await getCollection("projects");
     <WorkList
       list={projects.map((project) => ({
         ...project.data,
+        url: `/projects/${project.id}`,
         img: {
           src: project.data.imgUrl,
           alt: project.data.title,

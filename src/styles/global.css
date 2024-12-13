@@ -65,6 +65,7 @@
 
   html,
   body {
+    scrollbar-gutter: stable;
     min-height: 100dvh;
     font-family: "Inter Variable", sans-serif;
     @apply bg-zinc-50;

@@ -1,9 +1,9 @@
 ---
 import Footer from "@/components/layout/footer.astro";
 import ResponsiveSideBar from "@/components/layout/responsive-side-bar.astro";
-
 import MetaIcons from "@/components/meta/meta-icons.astro";
 import "@fontsource-variable/inter";
+import { ClientRouter, fade } from "astro:transitions";
 import "../styles/global.css";
 
 interface Props {
@@ -17,7 +17,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -31,6 +30,8 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 
     <meta name="title" content={title} />
     <meta name="description" content={description} />
+
+    <ClientRouter />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -53,7 +54,10 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
       <div
         class="m-1.5 grid rounded-2xl bg-white px-5 py-10 shadow-[0_0_8px_2px_rgba(200,200,200,0.15)] md:px-10 md:py-20"
       >
-        <div class="mx-auto grid w-full max-w-screen-md grid-rows-[1fr_auto]">
+        <div
+          class="mx-auto grid w-full max-w-screen-md grid-rows-[1fr_auto]"
+          transition:animate={fade({ duration: 450 })}
+        >
           <slot />
 
           <Footer />
