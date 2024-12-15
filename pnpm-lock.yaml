@@ -29,6 +29,12 @@ importers:
       '@fontsource-variable/inter':
         specifier: ^5.1.0
         version: 5.1.0
+      '@fontsource-variable/montserrat':
+        specifier: ^5.1.0
+        version: 5.1.0
+      '@fontsource/lato':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@radix-ui/react-slot':
         specifier: ^1.1.0
         version: 1.1.0(@types/react@18.3.12)(react@18.3.1)
@@ -602,6 +608,12 @@ packages:
 
   '@fontsource-variable/inter@5.1.0':
     resolution: {integrity: sha512-Wj2dUGP0vUpxRGQTXQTCNJO+aLcFcQm+gUPXfj/aS877bQkEPBPv9JvZJpwdm2vzelt8NTZ+ausKlBCJjh2XIg==}
+
+  '@fontsource-variable/montserrat@5.1.0':
+    resolution: {integrity: sha512-1bloVBKJx/ABBmF+/VzhJZDLzaDNUxw/8Pt5AOgfKL6N3t1fAhwtJBb1gdqU7ABckSNLsKf572A5Inv9YneRug==}
+
+  '@fontsource/lato@5.1.0':
+    resolution: {integrity: sha512-wYa/DeUS/WuaJoR/vY+v74W6gtOm98DgoRdSj4FuMXe0E0XYGAEVOgh+DxusJR3EglRZU6ZZDF7vZ881vV1KGA==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -3990,6 +4002,10 @@ snapshots:
       levn: 0.4.1
 
   '@fontsource-variable/inter@5.1.0': {}
+
+  '@fontsource-variable/montserrat@5.1.0': {}
+
+  '@fontsource/lato@5.1.0': {}
 
   '@humanfs/core@0.19.1': {}
 
