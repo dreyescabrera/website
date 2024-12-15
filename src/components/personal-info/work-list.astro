@@ -2,7 +2,7 @@
 import externalResource from "@/assets/icons/external-resource.svg?raw";
 import Icon from "../utils/icon.astro";
 
-type ListItem = {
+export type ListItem = {
   title: string;
   yearStart?: number;
   yearEnd: number;
@@ -21,7 +21,7 @@ const { list } = Astro.props;
 ---
 
 <ul
-  class="grid grid-cols-[repeat(auto-fit,minmax(18.75rem,1fr))] gap-x-6 gap-y-10"
+  class="grid grid-cols-[repeat(auto-fill,minmax(18.75rem,1fr))] gap-x-6 gap-y-10"
 >
   {
     list.map(({ title, yearStart, yearEnd, img, url }) => (
@@ -31,7 +31,7 @@ const { list } = Astro.props;
             <img
               src={img.src}
               alt={img.alt}
-              class="aspect-[4.475_/_3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              class="aspect-[4.475_/_3] w-full transition-transform duration-500 group-hover:scale-105"
             />
           </figure>
 

@@ -2,16 +2,40 @@
 title: "Alamo Landing Page"
 client: "Alamo Algorithmics"
 tags: ["Web Development", "Design", "Landing Page"]
-imgUrl: "/media/alamo-demo.webp"
+imgUrl: "/media/alamoalgorithmics-landing-page.jpg"
 yearEnd: 2024
 highlighted: true
 url: "https://alamoalgorithmics.com"
 ---
 import FullWidthImg from "@/components/images/full-width-img.astro";
 
-<FullWidthImg src="/media/alamo-demo.webp" alt="Alamo Landing Page" withMargin />
+<FullWidthImg src={frontmatter.imgUrl} alt={frontmatter.title} withMargin />
 
-# Lorem ipsum dolor sit amet
+## A Journey in Building for Flexibility
 
-- skere
-- asdf
+When Alamo Algorithmics, a brand-new consulting startup, approached me, they had one clear need: a sleek landing page. The design had already been done by the design team and was waiting to be brought to life on the web. The requirements were a bit loose since their design guidelines were still evolving. This was an exciting challenge because I knew the site components would need to be flexible enough to adapt to those future changes.
+
+<FullWidthImg src="/media/alamoalgorithmics-figma.avif" alt="Alamo Algorithmics' Figma design" withMargin />
+
+## Lightweight by Design
+
+Landing pages need to be fast. Period. If a potential client has to wait for the page to load, they might leave before seeing what you're all about. To avoid that, I decided to go with static pages.
+
+Here's why: static pages are rendered ahead of time, so when someone visits the site, the server just hands over the finished product. Compare this to WordPress, which builds the page every time someone clicks the link. For a small company like Alamo, static wins.
+
+For the tech stack, I picked Astro with React. Astro gives you that modern, component-based development experience but spits out good ol' clean web-native code. No unnecessary fluff.
+
+## Making It Perfect
+
+From day one, I set out to make the site as true to the design as possible. Every detail mattered, whether it was making the dark mode look just right or ensuring animations flowed smoothly. Responsiveness? Pixel-perfect. I checked it on every screen size you can imagine.
+
+One standout challenge was the glowing cards that followed the user's mouse. Sounds cool, right? It is, but implementing it was no walk in the park. Math, background effects, more math—you get the picture. A lot of trial and error went into making it feel natural and not overly flashy.
+
+<FullWidthImg src="/media/alamoalgorithmics-glow-effect.gif" alt= "Glow effect on the landing page" withMargin />
+
+## The Impact
+
+The result? A fast, eye-catching site that's ready to help Alamo Algorithmics grow. It's not just a pretty face; it's part of their sales funnel now, and it's already collecting analytics to help them understand their audience better.
+
+Looking back, this project pushed me to be more adaptive and creative. I'm proud of how it turned out—and I invite you to check it out yourself!
+

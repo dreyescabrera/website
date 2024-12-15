@@ -1,6 +1,7 @@
 ---
 import SimpleContactMeSection from "@/components/contact/simple-contact-me-section.astro";
 import ProjectHeader from "@/components/headers/project-header.astro";
+import MoreProjectsList from "@/components/lists/more-projects-list.astro";
 import GoBackSection from "@/components/nav/go-back-section.astro";
 import MainLayout from "@/layouts/main-layout.astro";
 import { type CollectionEntry, getCollection, render } from "astro:content";
@@ -41,8 +42,22 @@ const dateText = [project.yearStart, project.yearEnd]
       url={project.url}
     />
 
-    <Content />
+    <div id="content">
+      <Content />
+    </div>
+
+    <MoreProjectsList />
 
     <SimpleContactMeSection />
   </main>
 </MainLayout>
+
+<style is:global>
+  #content h2 {
+    @apply mt-10;
+  }
+
+  #content p {
+    @apply mt-5;
+  }
+</style>
