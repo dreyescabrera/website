@@ -1,0 +1,18 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  withMargin?: boolean;
+}
+
+const { src, alt, withMargin } = Astro.props;
+---
+
+<video
+  class={`w-full object-cover rounded-xl shadow-sm ring-1 ring-zinc-200 ${withMargin ? "my-10" : ""}`}
+  controls
+  muted
+  aria-label={alt}
+  src={src}
+>
+</video>

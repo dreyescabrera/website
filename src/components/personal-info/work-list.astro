@@ -1,8 +1,12 @@
 ---
-type ListItem = {
+import externalResource from "@/assets/icons/external-resource.svg?raw";
+import Icon from "../utils/icon.astro";
+
+export type ListItem = {
   title: string;
   yearStart?: number;
   yearEnd: number;
+  url: string;
   img: {
     src: string;
     alt: string;
@@ -17,25 +21,36 @@ const { list } = Astro.props;
 ---
 
 <ul
-  class="grid grid-cols-[repeat(auto-fit,minmax(18.75rem,1fr))] gap-x-6 gap-y-10"
+  class="grid grid-cols-[repeat(auto-fill,minmax(18.75rem,1fr))] gap-x-6 gap-y-10"
 >
   {
-    list.map(({ title, yearStart, yearEnd, img }) => (
-      <li>
-        <figure class="overflow-hidden rounded-xl shadow-sm ring-1 ring-zinc-200">
-          <img
-            src={img.src}
-            alt={img.alt}
-            class="aspect-[4.475_/_3] w-full object-cover"
-          />
-        </figure>
+    list.map(({ title, yearStart, yearEnd, img, url }) => (
+      <li class="group">
+        <a href={url}>
+          <figure class="overflow-hidden rounded-xl shadow-sm ring-1 ring-zinc-200">
+            <img
+              src={img.src}
+              alt={img.alt}
+              class="aspect-[4.475_/_3] w-full transition-transform duration-500 group-hover:scale-105"
+            />
+          </figure>
 
-        <h3 class="mb-2.5 mt-5 text-sm font-normal leading-none">{title}</h3>
+          <h3 class="mb-2.5 mt-5 text-sm font-normal leading-none tracking-normal">
+            {title}
+          </h3>
 
-        <p class="text-xs leading-none text-zinc-500">
-          {yearStart && <span>{yearStart} - </span>}
-          <span>{yearEnd}</span>
-        </p>
+          <div class="flex items-center justify-between gap-2.5">
+            <p class="text-xs leading-none text-zinc-500">
+              {yearStart && <span>{yearStart} - </span>}
+              <span>{yearEnd}</span>
+            </p>
+
+            <Icon
+              icon={externalResource}
+              class="size-5 fill-zinc-500 transition-all duration-300 group-hover:fill-black"
+            />
+          </div>
+        </a>
       </li>
     ))
   }

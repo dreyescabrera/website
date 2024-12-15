@@ -13,10 +13,10 @@ export default defineConfig({
     host: "0.0.0.0",
   },
   integrations: [
-    mdx(),
-    sitemap(),
-    tailwind({ applyBaseStyles: false }),
     react(),
+    mdx(),
+    tailwind({ applyBaseStyles: false }),
+    sitemap(),
   ],
   vite: {
     plugins: [svgr()],

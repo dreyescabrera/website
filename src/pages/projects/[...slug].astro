@@ -1,7 +1,10 @@
 ---
+import SimpleContactMeSection from "@/components/contact/simple-contact-me-section.astro";
+import ProjectHeader from "@/components/headers/project-header.astro";
+import MoreProjectsList from "@/components/lists/more-projects-list.astro";
+import GoBackSection from "@/components/nav/go-back-section.astro";
 import MainLayout from "@/layouts/main-layout.astro";
-import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 
 interface Props {
   entry: CollectionEntry<"projects">;
@@ -11,7 +14,7 @@ export async function getStaticPaths() {
   const projects = await getCollection("projects");
 
   return projects.map((project) => ({
-    params: { slug: project.slug },
+    params: { slug: project.id },
     props: {
       entry: project,
     },
@@ -19,12 +22,42 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const project = entry.data;
+const { Content } = await render(entry);
+
+const dateText = [project.yearStart, project.yearEnd]
+  .filter(Boolean)
+  .join(" - ");
 ---
 
-<MainLayout title="idk" description="idk">
+<MainLayout title={project.title} description={project.tags.join(", ")}>
   <main>
-    <h1>idk</h1>
-    <Content />
+    <GoBackSection href="/projects" />
+
+    <ProjectHeader
+      title={project.title}
+      date={dateText}
+      categories={project.tags}
+      client={project.client}
+      url={project.url}
+    />
+
+    <div id="content">
+      <Content />
+    </div>
+
+    <MoreProjectsList />
+
+    <SimpleContactMeSection />
   </main>
 </MainLayout>
+
+<style is:global>
+  #content h2 {
+    @apply mt-10;
+  }
+
+  #content p {
+    @apply mt-5;
+  }
+</style>

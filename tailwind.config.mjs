@@ -1,3 +1,7 @@
+// @ts-check
+
+import animate from "tailwindcss-animate";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
@@ -19,6 +23,10 @@ export default {
       "9xl": ["10rem", { lineHeight: "1" }], // 160px font, tight line-height
     },
     extend: {
+      fontFamily: {
+        lato: ["Lato", "sans-serif"],
+        montserrat: ["Montserrat Variable", "sans-serif"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -71,5 +79,5 @@ export default {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animate],
 };

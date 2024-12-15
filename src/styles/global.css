@@ -65,25 +65,36 @@
 
   html,
   body {
+    scrollbar-gutter: stable;
     min-height: 100dvh;
-    font-family: "Inter Variable", sans-serif;
+    font-family: "Lato", sans-serif;
     @apply bg-zinc-50;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Montserrat Variable", sans-serif;
+    @apply scroll-m-20 font-medium tracking-tight;
+  }
+
   h1 {
-    @apply scroll-m-20 text-3xl font-medium tracking-tight lg:text-4xl;
+    @apply text-3xl lg:text-4xl;
   }
 
   h2 {
-    @apply scroll-m-20 text-xl font-medium tracking-tight lg:text-2xl;
+    @apply text-xl lg:text-2xl;
   }
 
   h3 {
-    @apply scroll-m-20 text-lg font-medium tracking-tight lg:text-xl;
+    @apply text-lg lg:text-xl;
   }
 
   h4 {
-    @apply scroll-m-20 text-lg font-medium tracking-tight;
+    @apply text-lg;
   }
 
   p {
