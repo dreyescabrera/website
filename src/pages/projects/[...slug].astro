@@ -30,7 +30,11 @@ const dateText = [project.yearStart, project.yearEnd]
   .join(" - ");
 ---
 
-<MainLayout title={project.title} description={project.tags.join(", ")}>
+<MainLayout
+  title={project.title}
+  description={project.tags.join(", ")}
+  contentContainerClass="md:pt-10"
+>
   <main>
     <GoBackSection href="/projects" />
 
@@ -42,7 +46,7 @@ const dateText = [project.yearStart, project.yearEnd]
       url={project.url}
     />
 
-    <div id="project-content">
+    <div class="prose-xl prose-headings:font-medium">
       <Content />
     </div>
 
@@ -51,13 +55,3 @@ const dateText = [project.yearStart, project.yearEnd]
     <SimpleContactMeSection />
   </main>
 </MainLayout>
-
-<style is:global>
-  #project-content h2 {
-    @apply mt-10;
-  }
-
-  #project-content p {
-    @apply mt-5;
-  }
-</style>

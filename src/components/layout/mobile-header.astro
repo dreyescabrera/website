@@ -15,11 +15,10 @@ import Profile from "../personal-info/profile.astro";
   </span>
 
   <div
-    class="pointer-events-none absolute left-0 top-full -z-10 w-full -translate-y-10 bg-white p-4 pb-6 opacity-0 shadow-sm ring-1 ring-zinc-200 transition duration-200"
+    class="pointer-events-none absolute left-0 top-full -z-10 w-full -translate-y-10 bg-white p-4 pb-6 opacity-0 shadow-sm ring-1 ring-zinc-200"
     id="mobile-nav"
   >
-    <SectionNav shouldReload />
-
+    <SectionNav />
     <SocialNav />
   </div>
 </div>
@@ -29,11 +28,13 @@ import Profile from "../personal-info/profile.astro";
     const toggle = document.querySelector("#mobile-nav-toggle")!;
     const mobileNav = document.querySelector("#mobile-nav")!;
 
-    toggle.addEventListener("click", () => {
-      const toggleClasses =
-        "pointer-events-none opacity-0 -translate-y-10".split(" ");
+    const toggleMenuClasses =
+      "pointer-events-none opacity-0 -translate-y-10 transition duration-200".split(
+        " ",
+      );
 
-      for (const className of toggleClasses) {
+    toggle.addEventListener("click", () => {
+      for (const className of toggleMenuClasses) {
         mobileNav.classList.toggle(className);
       }
 

@@ -1,5 +1,6 @@
 ---
 import SimpleContactMeSection from "@/components/contact/simple-contact-me-section.astro";
+import ArticleList from "@/components/lists/article-list.astro";
 import PersonalIntro from "@/components/personal-info/personal-intro.astro";
 import ServicesList from "@/components/personal-info/services-list.astro";
 import WorkList from "@/components/personal-info/work-list.astro";
@@ -41,6 +42,12 @@ const projects = allProjects.filter((project) => project.data.highlighted);
           description: service.description,
         }))}
       />
+    </section>
+
+    <section class="space-y-8">
+      <h2>Blog</h2>
+
+      <ArticleList />
     </section>
 
     <SimpleContactMeSection />

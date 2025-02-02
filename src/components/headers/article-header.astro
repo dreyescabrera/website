@@ -1,0 +1,46 @@
+---
+interface Props {
+  title: string;
+  date: string;
+  categories: string[];
+  person: {
+    name: string;
+    title: string;
+  };
+}
+
+const { title, date, categories, person } = Astro.props;
+
+const separatedCategories = categories.map((e, index) =>
+  index === categories.length - 1 ? e : e.concat(", "),
+);
+---
+
+<header class="mb-10">
+  <h1 class="text-3xl">{title}</h1>
+
+  <ul class="my-5 grid grid-cols-1 gap-x-5 gap-y-3.5 lg:grid-cols-3">
+    <li class="grow-[5] *:text-xs">
+      <p class="text-zinc-500">Date</p>
+      <p class="text-zinc-700">{date}</p>
+    </li>
+
+    <li class="*:text-xs">
+      <p class="text-zinc-500">Categories</p>
+      <ul class="flex flex-wrap gap-x-2">
+        {
+          separatedCategories.map((category) => (
+            <li class="whitespace-nowrap text-zinc-700">{category}</li>
+          ))
+        }
+      </ul>
+    </li>
+
+    <li class="*:text-xs">
+      <p class="text-zinc-500">{person.title}</p>
+      <p class="text-zinc-700">{person.name}</p>
+    </li>
+  </ul>
+
+  <slot />
+</header>

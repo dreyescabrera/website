@@ -1,6 +1,11 @@
 ---
+import SimpleContactMeSection from "@/components/contact/simple-contact-me-section.astro";
+import BlogpostHeader from "@/components/headers/blogpost-header.astro";
+import MoreArticlesList from "@/components/lists/more-articles-list.astro";
+import GoBackSection from "@/components/nav/go-back-section.astro";
 import MainLayout from "@/layouts/main-layout.astro";
 import { type CollectionEntry, getCollection, render } from "astro:content";
+import { format } from "date-fns";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -13,8 +18,31 @@ type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await render(post);
+
+const date = format(new Date(post.data.pubDate), "LLLL d, yyyy");
 ---
 
-<MainLayout {...post.data}>
-  <Content />
+<MainLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.heroImage}
+  contentContainerClass="md:pt-10"
+>
+  <main>
+    <GoBackSection href="/blog" />
+
+    <BlogpostHeader
+      title={post.data.title}
+      date={date}
+      categories={post.data.tags}
+    />
+
+    <div class="prose-xl prose-headings:font-medium">
+      <Content />
+    </div>
+
+    <MoreArticlesList currentArticleId={post.id} />
+
+    <SimpleContactMeSection />
+  </main>
 </MainLayout>

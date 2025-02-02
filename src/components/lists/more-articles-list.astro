@@ -1,0 +1,17 @@
+---
+import ArticleList from "./article-list.astro";
+
+interface Props {
+  currentArticleId: string;
+}
+
+const { currentArticleId } = Astro.props;
+---
+
+<section aria-label="More articles">
+  <hr class="mb-20 mt-14 border-zinc-200" />
+
+  <h2 class="my-8">Related Articles</h2>
+
+  <ArticleList omit={currentArticleId} limit={4} />
+</section>

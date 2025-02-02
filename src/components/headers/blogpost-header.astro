@@ -1,0 +1,18 @@
+---
+import ArticleHeader from "./article-header.astro";
+
+interface Props {
+  title: string;
+  date: string;
+  categories: string[];
+}
+
+const { title, date, categories } = Astro.props;
+---
+
+<ArticleHeader
+  title={title}
+  date={date}
+  categories={categories}
+  person={{ name: "Diego Reyes Cabrera", title: "Author" }}
+/>

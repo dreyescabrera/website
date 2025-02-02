@@ -1,6 +1,7 @@
 // @ts-check
 
 import animate from "tailwindcss-animate";
+import typography from "@tailwindcss/typography";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -31,6 +32,9 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        soft: "0 0 8px 2px rgba(200, 200, 200, 0.15)",
       },
       colors: {
         background: "hsl(var(--background))",
@@ -79,5 +83,5 @@ export default {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  plugins: [animate],
+  plugins: [animate, typography],
 };

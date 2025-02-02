@@ -5,6 +5,7 @@ import letter from "@/assets/icons/letter.svg?raw";
 import x from "@/assets/icons/x.svg?raw";
 import linkedin from "@/assets/icons/linkedin.svg?raw";
 import github from "@/assets/icons/github.svg?raw";
+import pencil from "@/assets/icons/pencil.svg?raw";
 
 type NavLink = {
   title: string;
@@ -27,6 +28,11 @@ export const NAV_LINKS: NavLink[] = [
     title: "About",
     icon: person,
     href: "/about",
+  },
+  {
+    title: "Blog",
+    icon: pencil,
+    href: "/blog",
   },
   {
     title: "Contact",
