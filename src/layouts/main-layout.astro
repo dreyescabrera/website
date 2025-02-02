@@ -5,7 +5,11 @@ import MetaIcons from "@/components/meta/meta-icons.astro";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/montserrat";
 import "@fontsource/lato";
-import { ClientRouter, fade } from "astro:transitions";
+import type {
+  TransitionAnimationPair,
+  TransitionDirectionalAnimations,
+} from "astro";
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 
 interface Props {
@@ -21,6 +25,25 @@ const { title, description, image } = Astro.props;
 const concatenatedTitle = title
   ? `${title} | Diego Reyes Cabrera`
   : "Diego Reyes Cabrera";
+
+const anim: TransitionAnimationPair = {
+  old: {
+    name: "fade-out",
+    duration: "250ms",
+    easing: "ease-out",
+  },
+  new: {
+    name: "fade-in",
+    duration: "0.5s",
+    delay: "100ms",
+    easing: "ease-in-out",
+  },
+};
+
+const customTransition: TransitionDirectionalAnimations = {
+  forwards: anim,
+  backwards: anim,
+};
 ---
 
 <html lang="en">
@@ -66,7 +89,7 @@ const concatenatedTitle = title
       >
         <div
           class="mx-auto grid w-full max-w-screen-md grid-rows-[1fr_auto]"
-          transition:animate={fade({ duration: 450 })}
+          transition:animate={customTransition}
         >
           <slot />
 
@@ -76,3 +99,25 @@ const concatenatedTitle = title
     </div>
   </body>
 </html>
+
+<style is:global>
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+</style>
