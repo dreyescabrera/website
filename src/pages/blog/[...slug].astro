@@ -1,5 +1,5 @@
 ---
-import SimpleContactMeSection from "@/components/contact/simple-contact-me-section.astro";
+import GithubComments from "@/components/github/github-comments.astro";
 import BlogpostHeader from "@/components/headers/blogpost-header.astro";
 import MoreArticlesList from "@/components/lists/more-articles-list.astro";
 import GoBackSection from "@/components/nav/go-back-section.astro";
@@ -37,12 +37,14 @@ const date = format(new Date(post.data.pubDate), "LLLL d, yyyy");
       categories={post.data.tags}
     />
 
-    <div class="prose-xl prose-headings:font-medium">
+    <div class="prose prose-lg lg:prose-xl prose-headings:font-medium">
       <Content />
     </div>
 
-    <MoreArticlesList currentArticleId={post.id} />
+    <div class="mt-10">
+      <GithubComments />
+    </div>
 
-    <SimpleContactMeSection />
+    <MoreArticlesList currentArticleId={post.id} />
   </main>
 </MainLayout>

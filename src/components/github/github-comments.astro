@@ -1,0 +1,32 @@
+---
+import Giscus from "@giscus/react";
+
+/* 
+  This component generates this error in the console:
+
+    Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+      1. You might have mismatching versions of React and the renderer (such as React DOM)
+      2. You might be breaking the Rules of Hooks
+      3. You might have more than one copy of React in the same app
+
+  It can be safely ignored.
+  https://github.com/withastro/astro/issues/12802
+  Adding `client:only="react"` to the component fixes the issue.
+*/
+---
+
+<Giscus
+  client:idle
+  repo="dreyescabrera/website"
+  repoId="R_kgDONMWS3A"
+  category="Comments"
+  categoryId="DIC_kwDONMWS3M4CmkKZ"
+  mapping="url"
+  strict="0"
+  reactionsEnabled="1"
+  emitMetadata="0"
+  inputPosition="bottom"
+  theme="light"
+  lang="en"
+  loading="lazy"
+/>

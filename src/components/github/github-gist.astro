@@ -1,0 +1,51 @@
+---
+interface Props {
+  script: string;
+}
+
+const { script } = Astro.props;
+
+const scriptRegex = new RegExp(
+  '<script src="https://gist.github.com/dreyescabrera/[a-zA-Z0-9]+.js"></script>',
+);
+
+if (!scriptRegex.test(script)) {
+  throw new Error("Invalid GitHub Gist provided");
+}
+
+const iframeId = crypto.randomUUID();
+---
+
+<iframe
+  id={iframeId}
+  width="100%"
+  style="width: 100%; border: none;"
+  srcdoc={`
+      <head>
+        <base target='_blank' />
+        <script>
+          function updateHeight() {
+            const height = document.documentElement.scrollHeight;
+            window.parent.postMessage({ height, iframeId: '${iframeId}' }, '*');
+          }
+          window.addEventListener('load', updateHeight);
+          window.addEventListener('resize', updateHeight);
+        </script>
+      </head>
+      <body style="margin:0">
+          ${script}
+      </body>
+    `}
+>
+</iframe>
+
+<script define:vars={{ iframeId }}>
+  window.addEventListener("message", (e) => {
+    if (e.data.iframeId === iframeId) {
+      const iframe = document.getElementById(iframeId);
+      if (iframe && e.data.height) {
+        iframe.style.height = `${e.data.height}px`;
+      }
+    }
+  });
+</script>

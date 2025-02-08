@@ -4,10 +4,9 @@ import { Picture } from "astro:assets";
 interface Props {
   src: string;
   alt: string;
-  withMargin?: boolean;
 }
 
-const { src, alt, withMargin } = Astro.props;
+const { src, alt } = Astro.props;
 ---
 
 <figure class="w-full rounded-xl shadow-sm ring-1 ring-zinc-200">
@@ -16,7 +15,7 @@ const { src, alt, withMargin } = Astro.props;
     alt={alt}
     formats={["avif", "webp"]}
     width={1920}
-    height={1920}
-    class={`w-full rounded-xl object-cover ${withMargin ? "my-10" : ""}`}
+    height={1280}
+    class="w-full rounded-xl object-cover"
   />
 </figure>

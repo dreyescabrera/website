@@ -1,20 +1,93 @@
 ---
-title: "React Render Props"
-description: "Lorem ipsum dolor sit amet"
+title: "Render Props: the most overlooked technique in React"
+description: "This technique offers a straightforward and flexible method for encapsulate shared logic between components and power reusability."
 pubDate: "Jun 01 2024"
-heroImage: "/media/alamo-demo.webp"
+heroImage: "@/assets/media/blog/render-props/react-render-props.jpg"
 tags: ["React", "Render Props"]
 ---
+import GithubGist from "@/components/github/github-gist.astro";
+import FullWidthImg from "@/components/media/full-width-img.astro";
+import heroImage from "@/assets/media/blog/render-props/react-render-props.jpg";
 
-React Render Props is a feature that allows you to pass custom props to a component. This is useful when you want to customize the behavior of a component without having to modify its source code.
+<FullWidthImg src={heroImage} alt={frontmatter.title} />
 
-## Example
+If you're reading this post, you're likely a fellow frontend developer. Crafting smart UI components is one of our key tasks. To do so, we lean on proven patterns that enhance reusability, maintainability, even aesthetics (why not?). After all, managing state can be a breeze or a nightmare without the right approach.
 
-Here is an example of how you can use React Render Props to pass a custom `className` prop to a component:
+Today, I'll introduce you to a pattern that maximizes reusability: **render props**.
 
-{/* ```jsx
-import React from "react";
+This technique offers a straightforward and flexible method for encapsulate shared logic between components and power reusability.
 
-const CustomButton = ({ className }) => (
-  <button className={className}>Click me</button>
-); */}
+## First of all, what are render props?
+
+Render props, simply put, are props on a component which value is a function that returns a JSX Element. If you've used the `children` prop, well, that's technically a render prop.
+
+<GithubGist script='<script src="https://gist.github.com/dreyescabrera/9692a7b5208c0d0fca403ebd6d22dd1b.js"></script>' />
+
+But we're not strictly attached into the `children` prop if we want to implement render props. We can create our own, just like another prop.
+
+Here's the simplest example:
+
+<GithubGist script='<script src="https://gist.github.com/dreyescabrera/99e1af909cfe1c677148227f47b48ac0.js"></script>' />
+
+🔎 **Let's break down the example:**
+
+- `Box` is agnostic about its inner content—it simply executes `renderContent()` and renders whatever is returned.
+- The parent controls the rendering dynamically, showcasing the pattern's flexibility.
+
+This is the essence of Render Props: **dynamic, flexible rendering** driven by the parent. 
+
+But this pattern's true power lies in its ability to pass parameters to the render function—opening the door to smarter, more interactive components.
+
+### A Real-World Example: Smarter Forms
+
+Let's solve a common problem: building a reusable “create entity” section that can be opened and closed.
+
+**The Requirements:**
+
+1. The section should be **reusable**—capable of handling *any* creation form.
+2. It should manage its own **open/closed state**. 
+
+    Why? 
+    
+    Because only this component depends on that state, and keeping it local prevents unnecessary re-renders elsewhere.
+
+Here's how **render props** make this straightforward:
+
+<GithubGist script='<script src="https://gist.github.com/dreyescabrera/558bf8dceb7133bbba86d220eb2540a2.js"></script>' />
+
+**Let's see what we did here:**
+
+- **Encapsulated Logic:**
+    `BaseFormSection` manages its own `isOpen` state, so no global state or unrelated components are affected by its toggling.
+    
+- **UI Reusability**
+In this example, there will be many data entry forms with the same form section UI. Having a reusable `BaseFormSection` will make it perfect for the job.
+
+- **Separation of Concerns:**
+    
+    The component is responsible for *when* to display the form, while the parent determines *what* the form looks like. This clear separation enhances reusability and maintainability.
+    
+- **Dynamic Behavior:**
+    
+    By passing `toggleOpen` to `renderForm`, the parent can control interactions (for example, closing the form once it's saved) without taking over state management.
+    
+
+Here's how the parent passes in the form:
+
+<GithubGist script='<script src="https://gist.github.com/dreyescabrera/90b3fc2421ece983b4078a4aca437e40.js"></script>' />
+
+### 💡 Why Render Props?
+
+Using render props here keeps the component logic clean and self-contained. The parent component (via `ExampleUsage`) decides what form to display, while `BaseFormSection` manages *when* to display it. This separation leads to more maintainable and reusable code.
+
+⚠️ But be careful, Render props can get messy if overused. Nesting too many render props leads to *wrapper hell*—a deep, unreadable component tree.
+
+If you find yourself stacking multiple render props, it might be time to reconsider. Could a **custom hook** extract the shared logic? Would **Context** be a better fit for state that multiple components rely on? Keep it simple.
+
+### Conclusion
+
+The **render props** pattern is a clean, flexible way to share behavior and state between components—without unnecessary complexity. Used wisely, it keeps components reusable and avoids prop drilling, but when overused, it can hurt readability.
+
+Like any pattern, **the key is balance**—use render props where they shine, and reach for hooks or context when they make more sense.
+
+📌 **Want to dive deeper?** Check out on advanced render props techniques!
