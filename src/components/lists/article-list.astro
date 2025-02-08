@@ -1,4 +1,5 @@
 ---
+import { getDynamicImages } from "@/utils/get-dynamic-images";
 import { Picture } from "astro:assets";
 import { getCollection } from "astro:content";
 import { format } from "date-fns";
@@ -17,10 +18,9 @@ if (limit) {
   blogPosts = blogPosts.slice(0, limit);
 }
 
-const images = blogPosts.map(async (post) => {
-  const a = await import(post.data.heroImage);
-  return a.default;
-});
+const images = getDynamicImages(blogPosts.map((post) => post.data.heroImage));
+
+const loadedImages = await Promise.all(images);
 ---
 
 <section aria-label="Article list">
@@ -49,7 +49,7 @@ const images = blogPosts.map(async (post) => {
               <figure class="shrink-0 overflow-hidden rounded-xl ring-1 ring-zinc-200 lg:size-40">
                 <Picture
                   formats={["avif", "webp"]}
-                  src={images[index]}
+                  src={loadedImages[index]}
                   alt={post.data.title}
                   class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
