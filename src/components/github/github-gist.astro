@@ -39,7 +39,7 @@ const iframeId = crypto.randomUUID();
 >
 </iframe>
 
-<script define:vars={{ iframeId }}>
+<script define:vars={{ iframeId }} is:inline>
   window.addEventListener("message", (e) => {
     if (e.data.iframeId === iframeId) {
       const iframe = document.getElementById(iframeId);
