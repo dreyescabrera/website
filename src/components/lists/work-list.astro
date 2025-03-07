@@ -8,11 +8,16 @@ import Icon from "../utils/icon.astro";
 interface Props {
   omit?: string;
   limit?: number;
+  onlyHighlighted?: boolean;
 }
 
-const { omit, limit } = Astro.props;
+const { omit, limit, onlyHighlighted = false } = Astro.props;
 
 let projects = await getCollection("projects", (entry) => entry.id !== omit);
+
+if (onlyHighlighted) {
+  projects = projects.filter((project) => project.data.highlighted);
+}
 
 if (limit) {
   projects = projects.slice(0, limit);
