@@ -2,7 +2,7 @@ import type { DynamicLocalImage } from "astro:assets";
 
 export const getDynamicImages = async (images: string[]) => {
   const imageModules = import.meta.glob<DynamicLocalImage>(
-    "@/assets/media/**/*.jpg",
+    "@/assets/media/**/*.{jpg,jpeg,png,webp,avif,gif,svg}",
   );
 
   const imagesPromises = images.map(async (image) => {

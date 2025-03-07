@@ -23,6 +23,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const project = entry.data;
+const projectId = entry.id;
 const { Content } = await render(entry);
 
 const dateText = [project.yearStart, project.yearEnd]
@@ -50,7 +51,7 @@ const dateText = [project.yearStart, project.yearEnd]
       <Content />
     </div>
 
-    <MoreProjectsList />
+    <MoreProjectsList currentProjectId={projectId} />
 
     <SimpleContactMeSection />
   </main>

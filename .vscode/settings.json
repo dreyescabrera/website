@@ -1,4 +1,4 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["alamoalgorithmics", "Algorithmics", "Giscus"]
+  "cSpell.words": ["alamoalgorithmics", "Algorithmics", "Giscus", "torq"]
 }

@@ -2,16 +2,19 @@
 title: "TORQ App"
 client: "Torq Partners LLC"
 tags: ["Web Application", "Mobile Application"]
-imgUrl: "/media/torq-demo.webp"
+imgUrl: "src/assets/media/projects/torq/torq-demo.webp"
 yearStart: 2023
 yearEnd: 2024
 highlighted: true
 url: "https://app.torq.tech"
 ---
+import torqDemoImg from "@/assets/media/projects/torq/torq-demo.webp";
+import torqProjectsImg from "@/assets/media/projects/torq/torq-projects.png";
+import torqDemoVideo from "@/assets/media/projects/torq/torq-demo.mp4";
 import FullWidthImg from "@/components/media/full-width-img.astro";
 import FullWidthVideo from "@/components/media/full-width-video.astro";
 
-<FullWidthImg src={frontmatter.imgUrl} alt={frontmatter.title} />
+<FullWidthImg src={torqDemoImg} alt={frontmatter.title} />
 
 ## From Mobile App Refinements to a Full-fledged Web Platform
 
@@ -23,13 +26,13 @@ Starting as a frontend developer, I dove into the codebase and quickly got to wo
 
 While I've contributed to countless features, the TORQ web application stands out as my proudest achievement. I took full ownership of this project—from its inception to launch. Unlike the mobile app, the web version isn't just a replica; it includes game-changing features like team accounts. Now, contractors can create teams and add members on the fly—a must-have for fast-paced home services.
 
-<FullWidthImg src="/media/torq-projects.png" alt="TORQ web projects" />
+<FullWidthImg src={torqProjectsImg} alt="TORQ web projects" />
 
 ## Perfecting Every Pixel
 
 Whether it's the web or mobile app, every detail has been carefully considered. Every interaction and every pixel is crafted with precision to ensure the user experience is nothing short of impeccable. From the way buttons respond to clicks to the seamless dark mode toggle, it's all about creating a product that feels intuitive and effortless to use.
 
-<FullWidthVideo src="/media/torq-demo.mp4" alt="TORQ dark mode toggle" />
+<FullWidthVideo src={torqDemoVideo} alt="TORQ dark mode toggle" />
 
 ## The Impact
 

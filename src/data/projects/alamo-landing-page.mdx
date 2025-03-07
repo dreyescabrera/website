@@ -2,20 +2,24 @@
 title: "Alamo Algorithmics's Website"
 client: "Alamo Algorithmics"
 tags: ["Web Development", "Design", "Landing Page", "React"]
-imgUrl: "/media/alamoalgorithmics-landing-page.jpg"
+imgUrl: "src/assets/media/projects/alamo-algorithmics-website/alamoalgorithmics-landing-page.jpg"
 yearEnd: 2024
 highlighted: true
 url: "https://alamoalgorithmics.com"
 ---
+import landingPageImg from "@/assets/media/projects/alamo-algorithmics-website/alamoalgorithmics-landing-page.jpg";
+import figmaImg from "@/assets/media/projects/alamo-algorithmics-website/alamoalgorithmics-figma.avif";
+import glowEffectImg from "@/assets/media/projects/alamo-algorithmics-website/alamoalgorithmics-glow-effect.gif";
 import FullWidthImg from "@/components/media/full-width-img.astro";
 
-<FullWidthImg src={frontmatter.imgUrl} alt={frontmatter.title} withMargin />
+
+<FullWidthImg src={landingPageImg} alt={frontmatter.title} withMargin />
 
 ## A Journey in Building for Flexibility
 
 When Alamo Algorithmics, a brand-new consulting startup, approached me, they had one clear need: a sleek landing page. The design had already been done by the design team and was waiting to be brought to life on the web. The requirements were a bit loose since their design guidelines were still evolving. This was an exciting challenge because I knew the site components would need to be flexible enough to adapt to those future changes.
 
-<FullWidthImg src="/media/alamoalgorithmics-figma.avif" alt="Alamo Algorithmics' Figma design" withMargin />
+<FullWidthImg src={figmaImg} alt="Alamo Algorithmics' Figma design" withMargin />
 
 ## Lightweight by Design
 
@@ -31,7 +35,7 @@ From day one, I set out to make the site as true to the design as possible. Ever
 
 One standout challenge was the glowing cards that followed the user's mouse. Sounds cool, right? It is, but implementing it was no walk in the park. Math, background effects, more math—you get the picture. A lot of trial and error went into making it feel natural and not overly flashy.
 
-<FullWidthImg src="/media/alamoalgorithmics-glow-effect.gif" alt= "Glow effect on the landing page" withMargin />
+<FullWidthImg src={glowEffectImg} alt= "Glow effect on the landing page" withMargin />
 
 ## The Impact
 

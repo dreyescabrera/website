@@ -1,10 +1,7 @@
 ---
 import SimpleContactMeSection from "@/components/contact/simple-contact-me-section.astro";
-import WorkList from "@/components/personal-info/work-list.astro";
+import WorkList from "@/components/lists/work-list.astro";
 import MainLayout from "@/layouts/main-layout.astro";
-import { getCollection } from "astro:content";
-
-const projects = await getCollection("projects");
 ---
 
 <MainLayout title="Projects" description="My personal projects">
@@ -16,16 +13,7 @@ const projects = await getCollection("projects");
       working with me, feel free to reach out.
     </p>
 
-    <WorkList
-      list={projects.map((project) => ({
-        ...project.data,
-        url: `/projects/${project.id}`,
-        img: {
-          src: project.data.imgUrl,
-          alt: project.data.title,
-        },
-      }))}
-    />
+    <WorkList />
 
     <SimpleContactMeSection />
   </main>

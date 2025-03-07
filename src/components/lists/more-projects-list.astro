@@ -1,14 +1,11 @@
 ---
-import { getCollection } from "astro:content";
-import WorkList from "../personal-info/work-list.astro";
+import WorkList from "./work-list.astro";
 
-const projects = await getCollection("projects");
+interface Props {
+  currentProjectId: string;
+}
 
-const currentUrl = new URL(Astro.url.pathname, Astro.site);
-
-const filteredProjects = projects.filter((project) => {
-  return !currentUrl.pathname.includes(project.id);
-});
+const { currentProjectId } = Astro.props;
 ---
 
 <section>
@@ -16,14 +13,5 @@ const filteredProjects = projects.filter((project) => {
 
   <h2 class="my-8">More Projects</h2>
 
-  <WorkList
-    list={filteredProjects.map((project) => ({
-      ...project.data,
-      url: `/projects/${project.id}`,
-      img: {
-        src: project.data.imgUrl,
-        alt: project.data.title,
-      },
-    }))}
-  />
+  <WorkList omit={currentProjectId} />
 </section>

@@ -1,36 +1,40 @@
 ---
 import externalResource from "@/assets/icons/external-resource.svg?raw";
+import { getDynamicImages } from "@/utils/get-dynamic-images";
+import { Picture } from "astro:assets";
+import { getCollection } from "astro:content";
 import Icon from "../utils/icon.astro";
 
-export type ListItem = {
-  title: string;
-  yearStart?: number;
-  yearEnd: number;
-  url: string;
-  img: {
-    src: string;
-    alt: string;
-  };
-};
-
 interface Props {
-  list: ListItem[];
+  omit?: string;
+  limit?: number;
 }
 
-const { list } = Astro.props;
+const { omit, limit } = Astro.props;
+
+let projects = await getCollection("projects", (entry) => entry.id !== omit);
+
+if (limit) {
+  projects = projects.slice(0, limit);
+}
+
+const images = await getDynamicImages(
+  projects.map((project) => project.data.imgUrl),
+);
 ---
 
 <ul
   class="grid grid-cols-[repeat(auto-fill,minmax(18.75rem,1fr))] gap-x-6 gap-y-10"
 >
   {
-    list.map(({ title, yearStart, yearEnd, img, url }) => (
+    projects.map(({ id, data: { title, yearStart, yearEnd } }, index) => (
       <li class="group">
-        <a href={url}>
+        <a href={`/projects/${id}`}>
           <figure class="overflow-hidden rounded-xl shadow-sm ring-1 ring-zinc-200">
-            <img
-              src={img.src}
-              alt={img.alt}
+            <Picture
+              formats={["avif", "webp"]}
+              src={images[index]}
+              alt={title}
               class="aspect-[4.475_/_3] w-full transition-transform duration-500 group-hover:scale-105"
             />
           </figure>
