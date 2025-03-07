@@ -1,0 +1,63 @@
+---
+title: "CardScape"
+client: "Alamo Algorithmics"
+tags: ["Web Application", "Landing Page", "Admin Panel", "Three.js", "React"]
+imgUrl: "/src/assets/media/projects/virtual-business-cards/march-version.png"
+yearStart: 2024
+yearEnd: 2025
+highlighted: false
+url: "https://card-scape.vercel.app/"
+---
+import firstVersionImg from "@/assets/media/projects/virtual-business-cards/first-version.png";
+import marchVersionImg from "@/assets/media/projects/virtual-business-cards/march-version.png";
+import trigonometryImg from "@/assets/media/projects/virtual-business-cards/trigonometry.jpg";
+import cards3dImg from "@/assets/media/projects/virtual-business-cards/3d-cards.png";
+import FullWidthImg from "@/components/media/full-width-img.astro";
+
+Have you ever wanted to present yourself but you forgot your business card in your car? Or in your house? Or you ran out of cards?
+
+CardScape is born from the idea that you can take your business cards everywhere without worrying about carrying them, printing them, or even designing them. For that to happen, you should have it elsewhere, in something that we all carry everywhere: our phones.
+
+## How is it?
+
+A virtual business card is a digital representation of a physical card. But it shouldn't feel like just another UI element—it should feel *real*, like something you could pick up and hold. That pretty much led us to choosing a 3D environment with WebGL and Three.js.
+
+We designed and built a bunch of selectable 3D cards to choose from, and we also started off by designing the company's card as a foundation.
+
+We had the pieces. Now we needed to put them onto the board.
+
+<FullWidthImg src={cards3dImg} alt="Selectable 3D cards in CardScape" />
+
+## Rendering the 3D Cards in the Browser
+
+Modern browsers can do almost anything a desktop application can, including rendering 3D scenes. We used WebGL to bring our 3D cards to life in the browser, with Three.js making the complex WebGL processes much more manageable.
+
+That was just the foundation. Using Three.js, we imported the 3D models of the cards, applied textures, and gave users the ability to move them around with their mouse. We also added interactions—cards could rotate, flip, and even include clickable links to social profiles or a direct contact save option.
+
+Only after getting all of that done, we hit a wall. Something felt *off*. The scene was technically working, but it felt empty—lifeless. Not what we were aiming for.
+
+The card needed to be *somewhere*. A nice floor, an atmospheric background, something that made it feel less like a floating asset and more like a *real* object in a space.
+
+<FullWidthImg src={firstVersionImg} alt="Early prototype of floating 3D card in empty space" />
+
+## A Pretty Fun but Challenging Challenge
+
+I've always loved understanding how a virtual 3D space works. But here's the thing—it's *nothing* like everyday JavaScript development. Sure, it's code, but suddenly, I was dealing with math-heavy concepts like trigonometry, lighting calculations, and GPU optimizations. Stuff I hadn't touched since high school.
+
+And then, I hit *that* moment. The one where you go from "Okay, I think I get this" to "Oh no, I actually understand how much I *don't* know."
+
+It was overwhelming. I almost gave up. The more I learned, the more I realized just how deep the rabbit hole went. But at the same time, that challenge brought me back to life. It felt like learning to play an instrument for the first time—frustrating, exciting, and rewarding, all at once.
+
+Even though I hadn't used Three.js before, I pushed through. One bit at a time. And honestly? Depending on when you're reading this, I'm probably still learning. 3D is an entire world of its own, and I've barely scratched the surface.
+
+<FullWidthImg src={trigonometryImg} alt="Visual representation of 3D math concepts used in the project" />
+
+## Bringing the Scene to Life
+
+So how did we fix the lifelessness? We experimented. First, we tweaked the lighting, but it still felt dull. Then, we added reflections, but it wasn't enough. Eventually, we found the key—postprocessing effects.
+
+We introduced a dynamic background with subtle movements, depth-of-field effects, and some light distortion to make the cards feel like they existed in a real environment. That tiny change made all the difference. Now, the cards weren't just floating in an empty space—they *belonged* there.
+
+<FullWidthImg src={marchVersionImg} alt="Final polished version of the 3D card with reflections and background" />
+
+And that was it. A simple business card turned into a journey through WebGL, 3D space, and a deep dive into what I didn't know. And honestly? I wouldn't have it any other way.
