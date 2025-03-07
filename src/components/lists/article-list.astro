@@ -18,9 +18,9 @@ if (limit) {
   blogPosts = blogPosts.slice(0, limit);
 }
 
-const images = getDynamicImages(blogPosts.map((post) => post.data.heroImage));
-
-const loadedImages = await Promise.all(images);
+const images = await getDynamicImages(
+  blogPosts.map((post) => post.data.heroImage),
+);
 ---
 
 <section aria-label="Article list">
@@ -32,7 +32,7 @@ const loadedImages = await Promise.all(images);
             <div class="flex flex-col-reverse gap-5 lg:flex-row">
               <div class="flex grow flex-col gap-2.5 py-1.5">
                 <p class="text-xs">
-                  {format(new Date(post.data.pubDate), "LLLL d, yyyy")}
+                  {format(post.data.pubDate, "LLLL d, yyyy")}
                 </p>
 
                 <h2 class="font-montserrat text-lg font-medium">
@@ -49,7 +49,7 @@ const loadedImages = await Promise.all(images);
               <figure class="shrink-0 overflow-hidden rounded-xl ring-1 ring-zinc-200 lg:size-40">
                 <Picture
                   formats={["avif", "webp"]}
-                  src={loadedImages[index]}
+                  src={images[index]}
                   alt={post.data.title}
                   class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
