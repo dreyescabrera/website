@@ -1,0 +1,61 @@
+---
+title: "Why Your Ionic Loading Overlay Won't Dismiss (And How to Fix It)"
+description: "The first time I worked with Ionic, I spent hours debugging a simple problem: I could present a global loading overlay with the useIonLoading hook, but I couldn't dismiss it."
+pubDate: "03/14/25"
+heroImage: "/src/assets/media/blog/ionic-loading-overlay/ionic-loading-overlay.jpg"
+tags: ["React", "Ionic", "useEffect", "Debugging"]
+---
+import GithubGist from "@/components/github/github-gist.astro";
+import FullWidthImg from "@/components/media/full-width-img.astro";
+import FullWidthVideo from "@/components/media/full-width-video.astro";
+import heroImage from "@/assets/media/blog/ionic-loading-overlay/ionic-loading-overlay.jpg";
+import loadingOverlayDemoVideo from "@/assets/media/blog/ionic-loading-overlay/loading-overlay-demo.mp4";
+
+<FullWidthImg src={heroImage} alt={frontmatter.title} />
+
+The first time I worked with Ionic, I spent hours debugging a simple problem: I could present a global loading overlay with the `useIonLoading` hook, but I couldn't dismiss it.
+
+Here's the component that caused it:
+
+<GithubGist script='<script src="https://gist.github.com/dreyescabrera/7f7f8b70c5381d881a7c7eae18d3ea00.js"></script>' />
+
+<FullWidthVideo src={loadingOverlayDemoVideo} alt="Loading overlay demo" />
+
+## Why did this happen?
+
+The problem was that `present` was called *twice*, creating two loading overlays. But only one would be dispatched, leaving the other stuck. This seemed odd, why are there two overlays in the DOM tree?
+
+To understand why, we need to look at how `useEffect` behaves in development mode.
+
+### How `useEffect` works
+
+When your application is wrapped in `React.StrictMode`, which is recommended for debugging, each effect runs twice in development mode. See the [official docs](https://react.dev/reference/react/StrictMode) for details.
+
+Even though it made me have a bad time, it made recognize a big problem I wasn't aware of, bigger than the overlay problem.
+
+It made me realize that I wasn't properly handling the AI model loading task,. Being executed twice, I noted that the model was being loaded twice. This was a separate issue, but kudos to the strict mode, to help catch that. 
+
+Of course, it also caused the loading overlay problem because `present` was called twice.
+
+### The second part of the problem
+
+When I fixed the model double load I solved one problem, but the overlay still didn't behave as expected. Ionic's internal logic didn't prevent multiple overlays or discard both when called twice.
+
+The only relevant information I found was an old [GitHub issue](https://github.com/ionic-team/ionic-framework/issues/26233#issuecomment-1307561924) that suggested we handle it manually.
+
+## The solution
+
+I simply added:
+
+- An `isLoading` flag in my AI service class.
+- A condition to check if the model was already loading before calling `present`.
+
+This solved both problems: **it prevented multiple model loads and ensured only one loading overlay was created and properly dismissed.**
+
+### What I learned
+
+This bug was frustrating, but `StrictMode` did its job: **it exposed a deeper issue I wasn't even looking for.** It forced me to rethink how I handle async tasks inside effects, and that's a win.
+
+If you've ever struggled with unexpected double renders, don't ignore them. **They might be pointing to a bigger flaw in your logic.**
+
+Here's the [repository](https://github.com/dreyescabrera/ionic-gemma-chat) if want to check my implementation.

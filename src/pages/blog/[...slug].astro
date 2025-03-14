@@ -17,6 +17,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
+
 const { Content } = await render(post);
 
 const date = format(new Date(post.data.pubDate), "LLLL d, yyyy");
@@ -37,7 +38,9 @@ const date = format(new Date(post.data.pubDate), "LLLL d, yyyy");
       categories={post.data.tags}
     />
 
-    <div class="prose prose-lg lg:prose-xl prose-headings:font-medium">
+    <div
+      class="prose-code:rounded-xs prose prose-lg lg:prose-xl prose-headings:font-medium prose-code:bg-zinc-100 prose-code:px-0.5 prose-code:font-mono prose-code:font-thin prose-code:text-green-600 prose-code:before:hidden prose-code:after:hidden"
+    >
       <Content />
     </div>
 
